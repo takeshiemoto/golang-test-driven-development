@@ -1,10 +1,12 @@
 package main
 
 import (
-	"fmt"
-	"github.com/takeshiemoto/golang-test-driven-development/hello"
+	"github.com/takeshiemoto/golang-test-driven-development/di"
+	"net/http"
+	"os"
 )
 
 func main() {
-	fmt.Println(hello.Hello("Takeshi", ""))
+	di.Greet(os.Stdout, "Elodie")
+	http.ListenAndServe(":5000", http.HandlerFunc(di.MyGreeterHandler))
 }
